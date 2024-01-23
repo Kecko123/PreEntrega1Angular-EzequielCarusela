@@ -2,12 +2,12 @@
 <!-- Sidebar -->
 <mat-drawer-container class="dashboardStyle" autosize>
   <mat-drawer #drawer class="example-sidenav sidebarStyle" mode="side">
-    <p class="blanco">Auto-resizing sidenav</p>
+    <p class="blanco">Work in progress...</p>
     @if (showFiller) {
       <p >Lorem, ipsum dolor sit amet consectetur.</p>
     }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
+    <button class="blanco" disabled="" (click)="showFiller = !showFiller" mat-raised-button>
+      Mostrar mas
     </button>
   </mat-drawer>
 <!-- Sidebar -->
@@ -16,10 +16,9 @@
   <div class="example-sidenav-content">
     <mat-toolbar class="navbarStyle">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon class="blanco">menu</mat-icon>
       </button>
-      <span class="example-icon" >CoderCasita</span>
-      <span class="example-spacer"></span>
+      <span appBigtext class="blanco">Coderhome</span>
     </mat-toolbar>
     <app-users></app-users>
   </div>

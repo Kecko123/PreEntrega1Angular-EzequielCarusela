@@ -1,24 +1,61 @@
 <div class="p-3">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tableStyle">
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.position}} </td>
-        </ng-container>
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.name}} </td>
-        </ng-container>
-    
-        <!-- Weight Column -->
-        <ng-container matColumnDef="note">
-          <th mat-header-cell *matHeaderCellDef> Nota </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.note}} </td>
-        </ng-container>
-        
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    
+  <h1 appBigtext class="text-center principalText"> Añadir estudiante a la lista</h1>
+
+  <!-- FORM -->
+  <!-- FORM -->
+  <div class="mb-3">
+    <app-users-form (studentUploaded)="onStudentSubmited($event)"></app-users-form>
+  </div>
+  <!-- FORM -->
+  <!-- FORM -->
+
+  <h2 appBigtext class="text-center principalText">Lista de estudiantes</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tableStyle">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
+      <td mat-cell *matCellDef="let student"> {{student | fullname}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Pais </th>
+      <td mat-cell *matCellDef="let student"> {{student.country}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phonenumber">
+      <th mat-header-cell *matHeaderCellDef> Numero de teléfono </th>
+      <td mat-cell *matCellDef="let student"> {{student.phonenumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modify">
+      <th mat-header-cell *matHeaderCellDef></th>
+
+      <td mat-cell *matCellDef="let student"> 
+
+        <button mat-mini-fab class="btnCommonRed ml-2" (click)="deleteStudent(student)" aria-label="Example icon button with a delete icon">
+          <mat-icon class="icon-display">delete</mat-icon>
+        </button> 
+        <button mat-mini-fab class="btnCommonGreen ml-2" aria-label="Example icon button with a delete icon">
+          <mat-icon class="icon-display">edit</mat-icon>
+        </button> 
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
